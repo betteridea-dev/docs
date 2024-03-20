@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "betteridea-docs",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "IDE Documentation",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/betteridea-dev/docs.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "BetterIDEa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
+    "url": "https://github.com/betteridea-dev/docs/issues"
   },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
+  "homepage": "https://github.com/betteridea-dev/docs#readme",
   "dependencies": {
     "next": "^13.0.6",
-    "nextra": "latest",
-    "nextra-theme-docs": "latest",
+    "nextra": "^2.13.4",
+    "nextra-theme-docs": "^2.13.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
