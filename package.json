@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/betteridea-dev/docs#readme",
   "dependencies": {
+    "@next/third-parties": "^14.1.4",
     "next": "^13.0.6",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",

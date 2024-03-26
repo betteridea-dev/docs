@@ -2,6 +2,7 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 import Image from 'next/image'
 import Script from 'next/script'
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const headProp = () => {
   return (
@@ -24,7 +25,7 @@ const headProp = () => {
       <meta property="twitter:title" content="BetterIDEa Developer Docs"></meta>
       <meta property="twitter:description" content="BetterIDEa Developer Docs"></meta>
 
-      <Script
+      {/* <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-V1XZ5N5L48"
         strategy="afterInteractive"
       />
@@ -36,7 +37,7 @@ const headProp = () => {
 
           gtag('config', 'G-V1XZ5N5L48');
         `}
-      </Script>
+      </Script> */}
     </head>
   )
 }
@@ -51,6 +52,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/betteridea-dev/docs',
   head: headProp,
+  main: ({ children }) => <>{children}<GoogleAnalytics gaId="G-V1XZ5N5L48" /></>,
   footer: {
     text: 'BetterIDEa Documentation',
   },
