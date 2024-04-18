@@ -1,0 +1,43 @@
+# Integrating with other webpages
+
+You can use our IDE code cell on your website by embedding it through an iframe.
+
+This can be used on documentation pages or any other webpage where you want to show code snippets and let the user run them.
+
+## Iframe usage
+
+```jsx
+<iframe
+  src="https://ide.betteridea.dev/?codeblock"
+  width="100%"
+  height="250px"
+  style={{ borderRadius: 10 }}
+  allowTransparency
+></iframe>
+```
+
+will produce something like
+
+<iframe src="https://ide.betteridea.dev/?codeblock" width="100%" height="250px" style={{borderRadius:10}} allowTransparency></iframe>
+
+## Custom code
+
+Just add a url parameter value `?codeblock=<URL encoded lua code>`
+
+example: for the lua code `Inbox[#Inbox].Data --Latest message data`, the URL encoded code would be `Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data`
+
+and can be used as `https://ide.betteridea.dev/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data`
+
+```jsx
+<iframe
+  src="http://ide.betteridea.dev/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data"
+  width="100%"
+  height="250px"
+  style={{ borderRadius: 10 }}
+  allowTransparency
+></iframe>
+```
+
+will preload the code cell with the lua code you provide in the url parameter
+
+<iframe src="https://ide.betteridea.dev/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data" width="100%" height="250px" style={{borderRadius:10}} allowTransparency></iframe>
