@@ -7,18 +7,16 @@ This can be used on documentation pages or any other webpage where you want to s
 ## Iframe usage
 
 ```jsx
-<iframe
-  src="https://ide.betteridea.dev/?codeblock"
-  width="100%"
-  height="250px"
-  style={{ borderRadius: 10 }}
-  allowTransparency
-></iframe>
+<iframe 
+  src="https://ide.betteridea.dev/?codeblock" 
+  width="100%" height="250px" 
+  style={{ borderRadius: 10 }} 
+/>
 ```
 
 will produce something like
 
-<iframe src="https://ide.betteridea.dev/?codeblock" width="100%" height="250px" style={{borderRadius:10}} allowTransparency></iframe>
+<iframe src="https://ide.betteridea.dev/?codeblock" width="100%" height="250px" style={{borderRadius:10}}></iframe>
 
 ## Custom code
 
@@ -29,15 +27,48 @@ example: for the lua code `Inbox[#Inbox].Data --Latest message data`, the URL en
 and can be used as `https://ide.betteridea.dev/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data`
 
 ```jsx
-<iframe
+<iframe 
   src="http://ide.betteridea.dev/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data"
-  width="100%"
-  height="250px"
-  style={{ borderRadius: 10 }}
-  allowTransparency
-></iframe>
+  width="100%" height="250px"
+  style={{ borderRadius: 10 }} 
+/>
 ```
 
 will preload the code cell with the lua code you provide in the url parameter
 
-<iframe src="https://ide.betteridea.dev/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data" width="100%" height="250px" style={{borderRadius:10}} allowTransparency></iframe>
+<iframe
+  id="last-msg"
+  src="http://localhost:5173/?codeblock=Inbox%5B%23Inbox%5D.Data%20--Latest%20message%20data"
+  width="100%" height="250px"
+  style={{borderRadius:10}}
+/>
+
+---
+
+## Running lua from external call
+
+You can execute the code cell from an external button click or any event by sending a message to the iframe.
+
+Add a unique id to the iframe and use a querySelector to get the iframe and then call `contentWindow.postMessage` with `{action: "run"}` and target origin as `https://ide.betteridea.dev`
+
+```jsx
+<iframe 
+  id="adder"
+  src="http://ide.betteridea.dev/?codeblock=1%2B1"
+  width="100%" height="250px"
+  style={{ borderRadius: 10 }} 
+/>
+```
+
+```jsx
+<button
+  onClick={() => {
+    const iframe = document.querySelector("#adder");
+    iframe.contentWindow.postMessage({ action: "run" }, "https://ide.betteridea.dev");
+  }}
+>
+  run 1+1
+</button>
+```
+
+This button will run the code cell which has the id `adder`
