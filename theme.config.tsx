@@ -52,7 +52,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/betteridea-dev/docs',
   head: headProp,
-  main: ({ children }) => <>{children}<GoogleAnalytics gaId="G-V1XZ5N5L48" /></>,
+  main: ({ children }) => <>{children}<GoogleAnalytics gaId="G-DCC8YGZYSK" /></>,
   footer: {
     text: 'BetterIDEa Documentation',
   },
