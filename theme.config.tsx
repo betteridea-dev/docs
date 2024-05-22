@@ -3,13 +3,14 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 import Image from 'next/image'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { useRouter } from 'next/router';
 
 const headProp = () => {
   return (
     <head>
       <title>BetterIDEa Developer Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="BetterIDEa Developer Docs" />
+      <meta property="title" content="BetterIDEa Developer Docs" />
       <meta
         name="description"
         content="BetterIDEa Developer Docs"
@@ -43,6 +44,14 @@ const headProp = () => {
 }
 
 const config: DocsThemeConfig = {
+  primaryHue: 101,
+  useNextSeoProps() {
+    const { asPath } = useRouter()
+    return {
+      defaultTitle: "BetterIDEa Developer Docs",
+      titleTemplate: asPath !== '/' ? "%s - BetterIDEa" : "BetterIDEa Docs",
+    }
+  },
   logo: <><Image src="https://raw.githubusercontent.com/betteridea-dev/ide/main/next_app/public/icon.svg" alt="logo" height={20} width={20} /><span className='mx-2 font-bold'>BetterIDEa</span></>,
   project: {
     link: 'https://github.com/betteridea-dev',
@@ -56,7 +65,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'BetterIDEa Documentation',
   },
-  faviconGlyph: "⚙️"
+  faviconGlyph: "💡"
 }
 
 export default config
