@@ -43,7 +43,7 @@ const headProp = () => {
 }
 
 const config: DocsThemeConfig = {
-  logo: <Image src="https://raw.githubusercontent.com/betteridea-dev/ide/main/app/public/logo.png" alt="logo" height={50} width={140} />,
+  logo: <><Image src="https://raw.githubusercontent.com/betteridea-dev/ide/main/next_app/public/icon.svg" alt="logo" height={20} width={20} /><span className='mx-2 font-bold'>BetterIDEa</span></>,
   project: {
     link: 'https://github.com/betteridea-dev',
   },

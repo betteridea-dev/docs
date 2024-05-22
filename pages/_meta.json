@@ -1,16 +1,16 @@
 {
   "index": "Introduction",
   "setup": "Dev Setup",
-  "notebook-interface": "The Notebook Interface",
+  "new-project": "New Project",
+  "interfaces": "Interfaces",
   "---": {
     "type": "separator"
   },
   "external-integration": "External Integration",
-  "ao": "AO",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://twitter.com/betteridea-dev",
+    "href": "mailto:hello@betteridea.dev",
     "newWindow": true
   }
 }
