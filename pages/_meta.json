@@ -3,10 +3,16 @@
   "setup": "Dev Setup",
   "new-project": "New Project",
   "interfaces": "Interfaces",
-  "---": {
+  "-1": {
     "type": "separator"
   },
   "external-integration": "External Integration",
+  "-2": {
+    "type": "separator"
+  },
+  "share-code": "Share Code",
+  "modules": "Modules",
+  "blueprints": "Blueprints",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
