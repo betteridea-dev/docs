@@ -13,6 +13,10 @@
   "share-project": "Share Project",
   "modules": "Modules",
   "blueprints": "Blueprints",
+  "-3":{
+    "type":"separator"
+  },
+  "examples":"Examples",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
