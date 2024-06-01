@@ -8,24 +8,71 @@ This can be useful on documentation pages or any other webpage where you want to
 
 This is possible through the use of the [`@betteridea/codecell`](https://www.npmjs.com/package/@betteridea/codecell) package which provides the `CodeCell` component and utility functions to run the code cells.
 
-[![NPM Downloads](https://img.shields.io/npm/dw/%40betteridea%2Fcodecell?style=flat&label=%40betteridea%2Fcodecell)](https://www.npmjs.com/package/@betteridea/codecell)
+[![NPM Downloads](https://img.shields.io/npm/dt/%40betteridea%2Fcodecell?style=flat&label=%40betteridea%2Fcodecell&color=lightgreen)](https://www.npmjs.com/package/@betteridea/codecell)
+
+### `<CodeCell .../>`
+
+A react component to render a code cell in your app.
+
+#### Props
+
+| Prop           | Type                     | Description                                                                   |
+| -------------- | ------------------------ | ----------------------------------------------------------------------------- |
+| `cellId`       | `string`                 | Unique id for the cell                                                        |
+| `appName`      | `string`                 | Unique app name                                                               |
+| `code`         | `string`                 | Initial code for the cell                                                     |
+| `onAOProcess`  | `(pid:string) => void`   | Callback function that run whenever a process is is loaded                    |
+| `onNewMessage` | `(msgs: msg[]) => void`  | Callback function, runs whenever process gets new messages                    |
+| `onInbox`      | `(inbox: msg[]) => void` | Callback function, runs whenever Inbox is received after calling `getInbox()` |
+| `width`        | `string`                 | Width of the cell                                                             |
+| `height`       | `string`                 | Height of the cell                                                            |
+| `className`    | `string`                 | Class names for styling                                                       |
+| `style`        | `React.CSSProperties`    | Inline styles                                                                 |
+| `devMode`      | `boolean`                | Boolean to enable dev mode                                                    |
+
+
+### `getInbox(...)`
+
+Fetches latest Inbox messages from the process.
+
+#### Arguments
+
+| Argument  | Type      | Description                |
+| --------- | --------- | -------------------------- |
+| `cellId`  | `string`  | Unique id of the cell      |
+| `devMode` | `boolean` | Boolean to enable dev mode |
+
+### `setCellCode(...)`
+
+To update the code in a cell, after it has been rendered.
+It is discouraged to update code by changing the `code` prop directly, since it re-renders the webview, again this is personal preference.
+
+#### Arguments
+
+| Argument  | Type      | Description                |
+| --------- | --------- | -------------------------- |
+| `cellId`  | `string`  | Unique id of the cell      |
+| `code`    | `string`  | Code to set in the cell    |
+| `devMode` | `boolean` | Boolean to enable dev mode |
 
 
 ## Example
 
-```jsx
+```javascript
 import { CodeCell } from '@betteridea/codecell';
 
-...
-
+// in your react app
 <CodeCell
-  cellId='C1'
-  appName='BetterIDEa-Docs'
-  code={`Name = {}
+  cellId="C1" 
+  appName="BetterIDEa-Code-Cell" 
+  code={`Names = {}
 
-table.insert(Name, "Ankush")
+table.insert(Names, "Ankush")
 
-return Name`}
+return Names`}
+  onAOProcess={(pid)=> console.log("using process: ", pid)}
+  onNewMessage={(msgs) => console.log("new messages: ", msgs)}
+  onInbox={(inbox) => console.log("got inbox: ", inbox)}
 />
 ```
 
