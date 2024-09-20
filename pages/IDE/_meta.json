@@ -1,0 +1,11 @@
+{
+    "setup": "Setup",
+    "new-project": "New Project",
+    "file-modes": "File Modes",
+    "db-explorer": "SQLite Explorer",
+    "interact": "Interact / Test",
+    "template-marketplace": "Template Marketplace",
+    "packages": "Install Packages",
+    "share-project": "Share Feature",
+    "blueprints": "Blueprints"
+}

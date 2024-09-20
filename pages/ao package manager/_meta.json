@@ -1,0 +1,6 @@
+{
+    "web": "Web Registry",
+    "publish": "Publish Packages",
+    "install": "Install Packages (AO)",
+    "download": "Download Packages (Local)"
+}
