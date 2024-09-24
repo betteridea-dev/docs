@@ -100,3 +100,5 @@ This will create a `dist` folder containing the lau bundle and the necessary fil
 | dependencies | Dependencies object for the package<br/>`{ name: { version } }` | `{}` | Yes |
 | warnings | Often packages need to modify global state to function, the publisher can then set the warnings flag to let the user know if their package can break the functioning of their process.<br/> The installMessage (if given) is displayed after the package is installed, the publisher should write a brief warning here if needed | `{ modifiesGlobalState: false, installMessage:"" }` | Yes |
 | wallet | Wallet jwk json file path to publish the package from | | No |
+
+The schema for `apm.json` is available at https://github.com/ankushKun/apm-cli/blob/main/apm.schema.json

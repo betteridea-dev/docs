@@ -1,1 +1,47 @@
 # Download packages locally
+
+For development purposes, you can download packages locally and use them manually in your project.
+
+Make sure you have installed the apm cli tool
+
+```bash
+apm download <package-name>
+```
+
+```bash
+# example usage
+❯ apm download 0rbit
+✔ Package 0rbit downloaded
+All packages downloaded
+
+❯ apm download @sam/Llama-Herder
+✔ Package @sam/Llama-Herder downloaded
+All packages downloaded
+
+❯ apm download sunglasses
+✔ Package sunglasses downloaded
+All packages downloaded
+
+❯ tree apm_modules
+apm_modules
+├── @apm
+│   ├── 0rbit
+│   │   ├── README.md
+│   │   ├── apm.json
+│   │   └── source.lua
+│   └── sunglasses
+│       ├── README.md
+│       ├── apm.json
+│       └── source.lua
+└── @sam
+    └── Llama-Herder
+        ├── README.md
+        ├── apm.json
+        └── source.lua
+
+6 directories, 9 files
+```
+
+This will create an `apm_modules` directory with directories for each package downloaded.
+
+You can then use the downloaded package in your project by importing it in lua or using the `.load` function in aos cli
