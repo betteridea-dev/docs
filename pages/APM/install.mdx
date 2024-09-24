@@ -1,0 +1,109 @@
+# Installing APM & Packages
+
+To install packages from APM, you will need to use the apm client tool.
+
+## Load APM client blueprint
+
+```lua
+.load-blueprint apm
+```
+
+Check the apm table
+
+```lua
+apm
+```
+
+This would print something like the following table
+
+```lua
+{
+   info = function: 0x41c7120,
+   ID = "DKF8oXtPvh3q8s0fJFIeHFyHNM6oKrwMCUrPxEMroak",
+   search = function: 0x41c6f40,
+   installed = {},
+   uninstall = function: 0x41c6e40,
+   update = function: 0x41c70c0,
+   install = function: 0x41c6ee0,
+   _version = "2.0.4"
+}
+```
+
+Always a _betteridea_ to keep the package manager updated to the latest version.
+    
+```lua
+apm.update()
+```
+
+## Install a package
+
+```lua
+-- if the package is under the default vendor (@apm) you dont need to pass the vendor name
+apm.install "package-name" 
+
+-- or if you want to install a package from a specific vendor
+apm.install "@vendor/package-name"
+```
+
+## Uninstall a package
+
+```lua
+apm.uninstall "package-name"
+```
+
+## Search for a package
+
+```lua
+apm.search "package-name"
+```
+
+This will output a list of packages that match the search query.
+
+```lua
+default@aos-2.0.0[Inbox:1]> apm.search "rakis"
+🔍 Search requested for rakis
+
+@rakis/DbAdmin | A Database Administrator Utility
+@rakis/WeaveDrive | WeaveDrive is a client that provides an interface to WeaveDrive for wasm64 processes
+@rakis/test-unit | A test runner
+@rakis/ntime | convert time intervals in the format `{n}-{interval unit(s)}` into seconds
+@rakis/Either | Either ADT
+@rakis/testrunner | a test runner for aos
+@rakis/Allocator | A weighted distribution function
+```
+
+## List installed packages
+
+```lua
+-- All installed packages and their versions are stored in the apm.installed table
+apm.installed
+```
+
+```lua
+default@aos-2.0.0[Inbox:1]> apm.installed
+{
+   @apm/sample-demo = "1.0.0",
+   @berry/AOlearn = "0.1.1"
+}
+```
+
+## Information about a specific package
+
+```lua
+apm.info "package-name"
+```
+
+This will output information about the package like the version, description, and other details.
+
+```lua
+default@aos-2.0.0[Inbox:1]> apm.info "@rakis/DbAdmin"
+📦 Info requested for @rakis/DbAdmin
+
+📦 @rakis/DbAdmin
+📄 Description    : A Database Administrator Utility
+🔖 Latest Version : 0.0.5
+📥 Installs       : 224
+🔗 APM Url        : https://apm.betteridea.dev/pkg?id=Fk-NVfu8FJ61nbvLUQs-SrC0xtafXiasX5E1vc2kzjs
+🔗 Repository Url : https://github.com/twilson63/aos-packages/tree/main/packages/db-admin
+```
+

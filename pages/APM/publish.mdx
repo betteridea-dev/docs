@@ -1,0 +1,102 @@
+# Publishing Packages
+
+To publish packages on APM you will need to use the [APM CLI TOOL](https://www.npmjs.com/package/apm-tool) 
+
+## Publish through the CLI
+
+### Install APM CLI 
+
+```bash
+npm install -g apm-tool@latest
+apm
+
+# or use it throught npx
+
+npx apm-tool@latest
+```
+
+```
+-- without any args it will show the menu
+ ______   ______  __    __       ______   __       __    
+/\  __ \ /\  == \/\ "-./  \     /\  ___\ /\ \     /\ \   
+\ \  __ \\ \  _-/\ \ \-./\ \    \ \ \____\ \ \____\ \ \  
+ \ \_\ \_\\ \_\   \ \_\ \ \_\    \ \_____\\ \_____\\ \_\ 
+  \/_/\/_/ \/_/    \/_/  \/_/     \/_____/ \/_____/ \/_/ 
+                                                          
+ Made with ♥ by BetterIDEa team                   [v1.3.4]
+
+? What would you like to do? (Use arrow keys)
+❯ Create new package boilerplate
+  Register a new vendor
+  Publish a package
+  Download an existing package
+  Open APM web interface
+  Exit
+```
+
+
+### Initialise a package
+
+Similar to `npm init`, you can use `apm init` to initialise a boilerplate for a new package.
+It will ask for basic details like vendor name, package name, version, description, etc.
+
+This will create an `apm.json` file in the package directory containing the package details.
+
+```bash
+apm init
+```
+
+
+### Registering a vendor
+
+By default, all packages are published under the `@apm` vendor name and appear as `@apm/package-name`.
+If you want to publish packages under your own vendor name, you can register a vendor name using the following command.
+
+```bash
+apm register-vendor <vendor-name>
+```
+
+### Publishing a package
+
+Once the source code has been written and necessasary details are added to the `apm.json` file, you can publish the package using the following command.
+
+```bash
+apm publish
+```
+
+This will ask for a wallet jwk json file path to publish the package from (unless a wallet path has been defined in apm.json)
+
+Once published the package will be available on the APM registry and can be installed using `apm install "<package-name>"`.
+
+## Publish through the web
+
+If you want to use your web wallet to publish packages instead of the cli, you can create a bundle of the package and upload it to the APM web interface.
+
+Just open [apm.betteridea.dev](https://apm.betteridea.dev), publish package tab and upload the bundle folder containing `bundled.lua`, `apm.json` and `README.md` files.
+
+To create an uploadable bundle of your package, simply run:
+
+```bash
+apm bundle
+```
+
+This will create a `dist` folder containing the lau bundle and the necessary files.
+
+---
+
+## apm.json structure
+
+| Key | Description | Default | Required |
+| --- | --- | :---: | :---: |
+| name | Name of the package | | yes |
+| vendor | Vendor name under which the package will be published |  @apm | Yes |
+| version | Version of the package in format `major.minor.patch` | 1.0.0 | Yes |
+| description | Short description of the package | | Yes |
+| main | Entry point of the package (required for bundling) | main.lua | No |
+| keywords | Keywords related to the package (max 5) | `[]` | Yes |
+| repository | URL of the package repository | | Yes |
+| authors | List of authors of the package <br/> `{ address, name, email, url }` | `[]` | No |
+| license | License of the package | MIT | Yes |
+| dependencies | Dependencies object for the package<br/>`{ name: { version } }` | `{}` | Yes |
+| warnings | Often packages need to modify global state to function, the publisher can then set the warnings flag to let the user know if their package can break the functioning of their process.<br/> The installMessage (if given) is displayed after the package is installed, the publisher should write a brief warning here if needed | `{ modifiesGlobalState: false, installMessage:"" }` | Yes |
+| wallet | Wallet jwk json file path to publish the package from | | No |
